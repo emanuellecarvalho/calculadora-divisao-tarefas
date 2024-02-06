@@ -1,11 +1,11 @@
+import StepsComponent from "@/components/Steps";
 import styles from "./page.module.css";
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>I'm a text</p>
-      </div>
+    <h1>Calculadora Divisão de Tarefas</h1>
+    <StepsComponent/>
     </main>
   );
 }
