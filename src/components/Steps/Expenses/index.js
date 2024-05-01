@@ -2,10 +2,12 @@ import {Input, InputNumber} from "antd";
 
 export default function Expenses() {
     return (
-        <div>
-            <Input placeholder="Digite o nome da despesa"/>
+        <div>           
+            <span>Informe o nome da despesa: </span>
+            <Input placeholder="Aluguel"/>
+            <span>Informe o valor da despesa: </span>
             <InputNumber
-                placeholder={'Digite o valor da despesa'}
+                placeholder={'R$ 2.000'}
                 style={{width: '100%'}}
                 min={1}
                 max={9999}

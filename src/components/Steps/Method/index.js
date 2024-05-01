@@ -14,8 +14,9 @@ export default function Method() {
     ];
     return (
         <div>
+            <span>Informe o método de divisão </span>
             <Select
-                placeholder={'Selecione o método de divisão'}
+                // placeholder={'Selecione o método de divisão'}
                 style={{
                     width: '100%',
                 }}

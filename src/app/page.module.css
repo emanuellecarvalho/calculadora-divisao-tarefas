@@ -109,6 +109,11 @@
     position: relative;
 }
 
+.plus-btn {
+    display: flex;
+    justify-content: flex-end;
+}
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
     .card:hover {

@@ -44,7 +44,7 @@ const StepsComponent = () => {
     }));
 
     const contentStyle = {
-        lineHeight: '260px',
+        lineHeight: '34px',
         textAlign: 'center',
         color: token.colorTextTertiary,
         backgroundColor: token.colorFillAlter,
@@ -64,12 +64,12 @@ const StepsComponent = () => {
             >
                 {current < steps.length - 1 && (
                     <Button type="primary" onClick={() => next()}>
-                        Next
+                        Próximo
                     </Button>
                 )}
                 {current === steps.length - 1 && (
                     <Button type="primary" onClick={() => message.success('Processing complete!')}>
-                        Done
+                        Resultado
                     </Button>
                 )}
                 {current > 0 && (
@@ -79,7 +79,7 @@ const StepsComponent = () => {
                         }}
                         onClick={() => prev()}
                     >
-                        Previous
+                        Voltar
                     </Button>
                 )}
             </div>
