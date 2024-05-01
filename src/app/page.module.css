@@ -109,9 +109,10 @@
     position: relative;
 }
 
-.plus-btn {
+.plus {
     display: flex;
     justify-content: flex-end;
+    padding: 10px 0;
 }
 
 /* Enable hover only on non-touch devices */

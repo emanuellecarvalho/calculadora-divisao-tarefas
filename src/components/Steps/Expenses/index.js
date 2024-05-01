@@ -1,6 +1,8 @@
 import {Input, InputNumber} from "antd";
 
-export default function Expenses() {
+export default function Expenses({form}) {
+    console.log('Expenses form', form)
+
     return (
         <div>           
             <span>Informe o nome da despesa: </span>

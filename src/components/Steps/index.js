@@ -7,14 +7,17 @@ import Expenses from "@/components/Steps/Expenses";
 import Method from "@/components/Steps/Method";
 import Result from "@/components/Steps/Result";
 
+
+const [form, setForm] = useState({people: []})
+
 const steps = [
     {
         title: 'Pessoas',
-        content: <People/>,
+        content: <People form={form} setForm={setForm}/>,
     },
     {
         title: 'Despesas',
-        content: <Expenses/>,
+        content: <Expenses form={form}/>,
     },
     {
         title: 'Método',
