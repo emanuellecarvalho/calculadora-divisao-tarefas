@@ -2,36 +2,18 @@
 
 import React, {useState} from 'react';
 import {Button, message, Steps, theme} from 'antd';
-import People from "@/components/Steps/People";
-import Expenses from "@/components/Steps/Expenses";
-import Method from "@/components/Steps/Method";
-import Result from "@/components/Steps/Result";
+import People from "@/components/Steps/ui-components/People";
+import Expenses from "@/components/Steps/ui-components/Expenses";
+import Method from "@/components/Steps/ui-components/Method";
+import Result from "@/components/Steps/ui-components/Result";
 
 
-const [form, setForm] = useState({people: []})
-
-const steps = [
-    {
-        title: 'Pessoas',
-        content: <People form={form} setForm={setForm}/>,
-    },
-    {
-        title: 'Despesas',
-        content: <Expenses form={form}/>,
-    },
-    {
-        title: 'Método',
-        content: <Method/>,
-    },
-    {
-        title: 'Resultado',
-        content: <Result/>,
-    }
-];
 
 const StepsComponent = () => {
     const {token} = theme.useToken();
     const [current, setCurrent] = useState(0);
+    const [form, setForm] = useState({people: [], expenses: []})
+
 
     const next = () => {
         setCurrent(current + 1);
@@ -41,6 +23,26 @@ const StepsComponent = () => {
         setCurrent(current - 1);
     };
 
+    const steps = [
+        {
+            title: 'Pessoas',
+            content: <People form={form} setForm={setForm}/>,
+        },
+        {
+            title: 'Despesas',
+            content: <Expenses form={form}/>,
+        },
+        {
+            title: 'Método',
+            content: <Method/>,
+        },
+        {
+            title: 'Resultado',
+            content: <Result/>,
+        }
+    ];
+
+    
     const items = steps.map((item) => ({
         key: item.title,
         title: item.title,

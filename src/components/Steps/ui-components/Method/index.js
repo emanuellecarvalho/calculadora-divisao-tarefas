@@ -14,6 +14,7 @@ export default function Method() {
     ];
     return (
         <div>
+            <h3>Selecione o método de divisão das despesas</h3>    
             <span>Informe o método de divisão </span>
             <Select
                 // placeholder={'Selecione o método de divisão'}
