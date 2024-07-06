@@ -4,8 +4,6 @@ import { PlusOutlined, CloseCircleFilled } from "@ant-design/icons";
 import { useState } from "react";
 
 export default function Expenses({ form, setForm }) {
-    console.log("Expenses form", form);
-
     const [expense, setExpense] = useState({
         expenseName: "",
         expenseValue: null,
