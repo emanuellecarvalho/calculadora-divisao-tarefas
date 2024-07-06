@@ -1,4 +1,4 @@
-import { Button, Input, InputNumber } from "antd";
+import { Button, Input, InputNumber, message } from "antd";
 import { PlusOutlined, CloseCircleFilled } from "@ant-design/icons";
 import styles from "../../../../app/page.module.css";
 import { useState } from "react";
@@ -18,20 +18,34 @@ export default function People({ form, setForm }) {
     };
 
     const handleClick = () => {
-        setForm({
-            ...form,
-            people: [...form.people, person],
-        });
+        let fieldIsEmpty = false;
 
-        setPerson({ name: "", salary: null });
+        if (!person.name.trim()) {
+            message.error("Por favor, informe o nome.");
+            fieldIsEmpty = true;
+        }
+
+        if (person.salary === null || person.salary <= 0) {
+            message.error("Por favor, informe um salário válido.");
+            fieldIsEmpty = true;
+        }
+
+        if (!fieldIsEmpty) {
+            setForm({
+                ...form,
+                people: [...form.people, person],
+            });
+
+            setPerson({ name: "", salary: null });
+        }
     };
 
     return (
         <div>
             <h3>Seleção de Pessoas</h3>
-            <span>Informe o seu nome: </span>
+            <span>Informe o seu nome* </span>
             <Input value={person.name} placeholder="Ana Silva" onChange={(e) => onChangeName(e.target.value)} />
-            <span>Informe o seu salário: </span>
+            <span>Informe o seu salário* </span>
             <InputNumber
                 value={person.salary}
                 placeholder={"R$ 2.000"}

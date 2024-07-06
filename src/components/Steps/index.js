@@ -12,6 +12,16 @@ const StepsComponent = () => {
     const [current, setCurrent] = useState(0);
     const [form, setForm] = useState({ people: [], expenses: [] });
 
+    const emptyFileds = (currentStep) => {
+        const checks = {
+            0: () => !form.people || form.people.length < 2,
+            1: () => !form.expenses || !form.expenses.length,
+            2: () => !form.method,
+        };
+
+        return checks[currentStep] ? checks[currentStep]() : false;
+    };
+
     const next = () => {
         setCurrent(current + 1);
     };
@@ -27,15 +37,15 @@ const StepsComponent = () => {
         },
         {
             title: "Despesas",
-            content: <Expenses form={form} />,
+            content: <Expenses form={form} setForm={setForm} />,
         },
         {
             title: "Método",
-            content: <Method />,
+            content: <Method form={form} setForm={setForm} />,
         },
         {
             title: "Resultado",
-            content: <Result />,
+            content: <Result form={form} />,
         },
     ];
 
@@ -64,7 +74,7 @@ const StepsComponent = () => {
                 }}
             >
                 {current < steps.length - 1 && (
-                    <Button type="primary" onClick={() => next()}>
+                    <Button disabled={emptyFileds(current)} type="primary" onClick={() => next()}>
                         Próximo
                     </Button>
                 )}
