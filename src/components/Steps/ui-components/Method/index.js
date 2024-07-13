@@ -1,4 +1,4 @@
-import { Select } from "antd";
+import { Divider, Select } from "antd";
 
 export default function Method({ form, setForm }) {
     const handleChange = (value) => {
@@ -7,6 +7,7 @@ export default function Method({ form, setForm }) {
             method: value,
         });
     };
+
     const options = [
         {
             value: "equal",
@@ -17,12 +18,31 @@ export default function Method({ form, setForm }) {
             label: "Divisão proporcional",
         },
     ];
+
     return (
         <div>
             <h3>Selecione o método de divisão das despesas</h3>
-            <span>Informe o método de divisão* </span>
+            <Divider />
+            <div>
+                {
+                    <>
+                        <p>
+                            <strong>Divisão igual</strong>:
+                        </p>
+                        <span>O total de despesas é dividido igualmente entre as pessoas adicionadas.</span>
+                        <p>
+                            <strong>Divisão proporcional</strong>:
+                        </p>
+                        <span>
+                            O total de despesas é dividido proporcionalmente em relação ao salário de cada pessoa
+                            adicionada.
+                        </span>
+                    </>
+                }
+            </div>
+            <Divider />
+            <span>Selecione o método de divisão* </span>
             <Select
-                // placeholder={'Selecione o método de divisão'}
                 style={{
                     width: "100%",
                 }}
