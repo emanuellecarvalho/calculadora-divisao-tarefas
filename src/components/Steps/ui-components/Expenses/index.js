@@ -39,17 +39,27 @@ export default function Expenses({ form, setForm }) {
         }
     };
 
+    const handleRemoveItem = (indexItem) => {
+        const newExpense = form?.expenses.filter((_, i) => i !== indexItem);
+
+        setForm({
+            ...form,
+            expenses: newExpense,
+        });
+    };
+
     return (
         <div>
             <h3>Adição de Despesas em comum</h3>
             <span>Informe o nome da despesa* </span>
             <Input
-                value={expense.expenseName}
+                value={expense?.expenseName}
                 placeholder="Aluguel"
                 onChange={(e) => onChangeExpenseName(e.target.value)}
             />
             <span>Informe o valor da despesa* </span>
             <InputNumber
+                value={expense?.expenseValue}
                 placeholder={"R$ 2.000"}
                 style={{ width: "100%" }}
                 min={1}
@@ -63,7 +73,10 @@ export default function Expenses({ form, setForm }) {
                 {form?.expenses.map((p, index) => (
                     <div key={index}>
                         {p.expenseName} - R$ {p.expenseValue}{" "}
-                        <CloseCircleFilled style={{ fontSize: "12px", color: "#FF1818" }} />
+                        <CloseCircleFilled
+                            onClick={() => handleRemoveItem(index)}
+                            style={{ fontSize: "12px", color: "#FF1818" }}
+                        />
                     </div>
                 ))}
             </div>

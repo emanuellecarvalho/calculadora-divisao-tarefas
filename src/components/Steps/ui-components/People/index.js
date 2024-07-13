@@ -40,14 +40,23 @@ export default function People({ form, setForm }) {
         }
     };
 
+    const handleRemoveItem = (indexItem) => {
+        const newPeople = form?.people.filter((_, i) => i !== indexItem);
+
+        setForm({
+            ...form,
+            people: newPeople,
+        });
+    };
+
     return (
         <div>
             <h3>Seleção de Pessoas</h3>
             <span>Informe o seu nome* </span>
-            <Input value={person.name} placeholder="Ana Silva" onChange={(e) => onChangeName(e.target.value)} />
+            <Input value={person?.name} placeholder="Ana Silva" onChange={(e) => onChangeName(e.target.value)} />
             <span>Informe o seu salário* </span>
             <InputNumber
-                value={person.salary}
+                value={person?.salary}
                 placeholder={"R$ 2.000"}
                 style={{ width: "100%" }}
                 min={1}
@@ -60,7 +69,11 @@ export default function People({ form, setForm }) {
             <div>
                 {form?.people.map((p, index) => (
                     <div key={index}>
-                        {p.name} - R$ {p.salary} <CloseCircleFilled style={{ fontSize: "12px", color: "#FF1818" }} />
+                        {p.name} - R$ {p.salary}{" "}
+                        <CloseCircleFilled
+                            onClick={() => handleRemoveItem(index)}
+                            style={{ fontSize: "12px", color: "#FF1818" }}
+                        />
                     </div>
                 ))}
             </div>
