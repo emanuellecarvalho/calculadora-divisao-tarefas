@@ -69,7 +69,7 @@ export default function People({ form, setForm }) {
             <div>
                 {form?.people.map((p, index) => (
                     <div key={index}>
-                        {p.name} - R$ {p.salary}{" "}
+                        {p.name} - R$ {p.salary}
                         <CloseCircleFilled
                             onClick={() => handleRemoveItem(index)}
                             style={{ fontSize: "12px", color: "#FF1818" }}
